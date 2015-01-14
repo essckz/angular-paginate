@@ -9,6 +9,7 @@ app.directive("paginate", ['$http', '$state', '$rootScope',
             scope: {
             /*    type: "@",
                 componentModel: "="*/
+                list: "="
             },
 
             controller: function($scope){
@@ -20,6 +21,8 @@ app.directive("paginate", ['$http', '$state', '$rootScope',
                 scope.pagination = [];
                 scope.controls = [];
 
+                var n = scope.list.length;
+
                 scope.current = {};
                 scope.current.page = 0;
 
@@ -28,12 +31,6 @@ app.directive("paginate", ['$http', '$state', '$rootScope',
 
                 var interval = 10;
                 scope.interval = interval;
-
-                scope.data = [];
-    
-                for (var i=0; i<50; i++) {
-                    scope.data.push(i);  
-                }
 
                 scope.elements = [];
 
@@ -54,14 +51,16 @@ app.directive("paginate", ['$http', '$state', '$rootScope',
                     }).indexOf(scope.current.page);
 
                     if (findIndex !== -1) {
-                        var b = scope.pagination[findIndex];
-                        scope.elements = scope.data.slice(b.begin, b.end);
+                        var page = scope.pagination[findIndex];
+                        scope.elements = scope.list.slice(page.begin, page.end);
+
+                        controlify();
                     }
                 }
 
                 scope.page = process;
 
-                function paginate(n) {
+                function paginate() {
 
                   scope.pagination = [];
 
@@ -75,6 +74,12 @@ app.directive("paginate", ['$http', '$state', '$rootScope',
                     scope.pagination.push(page);
                   }
 
+                  controlify();
+
+                  process(scope.current.page);
+                }
+
+                function controlify(n) {
                   if ( scope.current.page >= 0 && scope.current.page < 7 ) {
                     first = 0;
 
@@ -99,11 +104,9 @@ app.directive("paginate", ['$http', '$state', '$rootScope',
                   }
 
                   scope.controls = scope.pagination.slice(first, last);
-
-                  process(scope.current.page);
                 }
 
-                paginate(scope.data.length);
+                paginate();
             }
         };
     }

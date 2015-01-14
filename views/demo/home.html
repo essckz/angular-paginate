@@ -1,5 +1,9 @@
 <div>
-    <h4>Demo page</h4>
+	<h4>Demo page</h4>
 
-    <paginate></paginate>
+	<paginate list="list" elements="elements">
+		<div ng-repeat="e in elements">
+			ID{{e.id}}: {{e.name}}
+		</div>
+	</paginate>
 </div>

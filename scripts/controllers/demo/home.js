@@ -6,10 +6,12 @@ angular.module('demo')
 	function($scope, $state, $rootScope) {
 		console.log('DemoHomeCtrl');
 
-        $scope.list = [];
+		$scope.list = [];
 
-        for (var i=0; i<100000; i++) {
-            $scope.list.push(i);  
-        }
+		for (var i=0; i<100000; i++) {
+			var chr = String.fromCharCode(97 + i%25);
+
+			$scope.list.push({id: i, name: chr});
+		}
 	}]);
 

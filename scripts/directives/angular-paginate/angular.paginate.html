@@ -1,40 +1,43 @@
 <div>
 	<h3>Angular Paginate Directive</h3>
 
-	<!-- div ng-show="elements.length > 0">
-	  <div>
-	    Показывать по
-	    <span class="dropdown" name="report-selectParent">
-	      <a class="dropdown-toggle custom-dropdown-toggle" data-toggle="dropdown">{{interval}}</a>
-	      <ul class="dropdown-menu">
-	        <li ng-class="{true:'active', false:''}[t.value == interval]" ng-repeat="t in pageCount">
-	          <a ng-click='resourceCounter(t.value);'>
-	            <span>{{t.value}}</span>
-	          </a>
-	        </li>
-	      </ul>
-	    </span>
-	    элементов на странице
-	  </div>
-	</div -->
+<!-- div ng-show="elements.length > 0">
+<div>
+Показывать по
+<span class="dropdown" name="report-selectParent">
+<a class="dropdown-toggle custom-dropdown-toggle" data-toggle="dropdown">{{interval}}</a>
+<ul class="dropdown-menu">
+<li ng-class="{true:'active', false:''}[t.value == interval]" ng-repeat="t in pageCount">
+<a ng-click='resourceCounter(t.value);'>
+<span>{{t.value}}</span>
+</a>
+</li>
+</ul>
+</span>
+элементов на странице
+</div>
+</div -->
+
 	<div>
-	  <h4 ng-show="elements.length == 0">Пусто</h4>
-	  <div ng-repeat="r in elements">
-	  	{{r}}
-	  </div>
+		<h4 ng-show="elements.length == 0">Пусто</h4>
+		
+		<!-- user html code for list of elements in current page -->
+		<div ng-transclude>
+		</div>
 	</div>
+	
 	<div>
-	  <ul class="pagination" ng-show="controls.length > 1">
-	    <li ng-class="{disabled: current.page==0}"><a href ng-click="page(0)">&laquo;</a>
-	    </li>
-	    <li ng-class="{disabled: current.page==0}"><a href ng-click="page(current.page-1)">&#8592;</a>
-	    </li>
-	    <li ng-class="{active: current.page == p.index}" ng-repeat="p in controls"><a href ng-click="page(p.index);">{{p.index+1}}</a>
-	    </li>
-	    <li ng-class="{disabled: current.page==(pagination.length-1)}"><a href ng-click="page(current.page+1)">&#8594;</a>
-	    </li>
-	    <li ng-class="{disabled: current.page==(pagination.length-1)}"><a href ng-click="page(pagination.length-1)">&raquo;</a>
-	    </li>
-	  </ul>
+		<ul class="pagination" ng-show="controls.length > 1">
+			<li ng-class="{disabled: current.page==0}"><a href ng-click="page(0)">&laquo;</a>
+			</li>
+			<li ng-class="{disabled: current.page==0}"><a href ng-click="page(current.page-1)">&#8592;</a>
+			</li>
+			<li ng-class="{active: current.page == p.index}" ng-repeat="p in controls"><a href ng-click="page(p.index);">{{p.index+1}}</a>
+			</li>
+			<li ng-class="{disabled: current.page==(pagination.length-1)}"><a href ng-click="page(current.page+1)">&#8594;</a>
+			</li>
+			<li ng-class="{disabled: current.page==(pagination.length-1)}"><a href ng-click="page(pagination.length-1)">&raquo;</a>
+			</li>
+		</ul>
 	</div>
 </div>

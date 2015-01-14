@@ -9,7 +9,8 @@ app.directive("paginate", ['$http', '$state', '$rootScope',
             scope: {
             /*    type: "@",
                 componentModel: "="*/
-                list: "="
+                list: "=",
+                elements: "="
             },
 
             controller: function($scope){
@@ -34,12 +35,16 @@ app.directive("paginate", ['$http', '$state', '$rootScope',
 
                 scope.elements = [];
 
+                // on select of page
                 function process(index) {
-
-                    /*if (index === scope.current.page) {
+                    
+                    // do not update elements if selected current page
+                    // TODO: remove first bootstrap on 0 index
+                    if (index === scope.current.page && index !== 0) {
                         return;
-                    }*/
+                    }
 
+                    // avoid of incorrect index use
                     if (index < 0 || index >= scope.pagination.length) {
                         return;
                     }
@@ -60,6 +65,7 @@ app.directive("paginate", ['$http', '$state', '$rootScope',
 
                 scope.page = process;
 
+                // main function to paginate through list
                 function paginate() {
 
                   scope.pagination = [];
@@ -79,6 +85,7 @@ app.directive("paginate", ['$http', '$state', '$rootScope',
                   process(scope.current.page);
                 }
 
+                // controls' visual for selection
                 function controlify(n) {
                   if ( scope.current.page >= 0 && scope.current.page < 7 ) {
                     first = 0;

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+    <meta charset="utf-8">
+    <title>Angular paginate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body ng-controller="MainCtrl">
+    <div>
+        <h4>Main page</h4>
+        <div ui-view></div>
+    </div>
+
+    <script type='text/javascript' src='lib/angular/angular.min.js'></script>
+    <script type='text/javascript' src='lib/ui-router/angular-ui-router.js'></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <script type="text/javascript" src="scripts/directives/angular-paginate/angular.paginate.js"></script>
+
+    <script type="text/javascript" src="scripts/controllers/main.js"></script>
+    <script type="text/javascript" src="scripts/controllers/demo/home.js"></script>
+</body>
+</html>
